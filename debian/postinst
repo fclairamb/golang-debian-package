@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ ! -e /usr/local/go ]; then
+	ln -s /opt/go /usr/local/go
+fi
