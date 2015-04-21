@@ -1,12 +1,13 @@
-Source: golang
-Section: unknown
+Source: golang-alt
+Section: Development
 Priority: optional
-Maintainer: Florent Clairambault <florent@unknown>
+Maintainer: Florent Clairambault <florent@clairambault.fr>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.4
-Homepage: https://golang.org/
+Homepage: https://golang.org/doc/install
 
-Package: golang
-Architecture: amd64
+Package: golang-alt
+Architecture: any
 Description: golang binaries
  Golang package built directly from the official binaries
+Conflicts: golang-go

@@ -1,5 +1,9 @@
 VERSION=1.4.2
-ARCH=amd64
+ARCH:=$(DEB_HOST_ARCH)
+
+ifeq "$(ARCH)" "i386"
+	ARCH=386
+endif
 
 FILE=tmp/go-$(VERSION)-$(ARCH).tar.gz
 URL=https://storage.googleapis.com/golang/go$(VERSION).linux-$(ARCH).tar.gz
@@ -8,7 +12,7 @@ ifeq "$(DESTDIR)" ""
 endif
 
 all:
-	@echo make package to create a package
+	@echo make packages to create the packages
 
 clean:
 	rm -Rf dist debian/golang
@@ -33,6 +37,13 @@ install: $(FILE)
 
 package:
 	dpkg-buildpackage -b -us -uc
+	mkdir -p dist/package
+	mv ../*.deb dist/package/
+	rm ../*.changes
+
+packages:
+	dpkg-buildpackage -b -us -uc -aamd64
+	dpkg-buildpackage -b -us -uc -ai386
 	mkdir -p dist/package
 	mv ../*.deb dist/package/
 	rm ../*.changes

@@ -1,18 +1,6 @@
 #!/bin/sh
 
-export GOROOT=/opt/go
-export GOPATH=~/.go
-
-if [ ! -d "$GOROOT" ]; then
-	echo "GOROOT is missing in ${GOROOT} !!!"
-	exit 1
-fi
-
-grep -q "GOROOT=" ~/.bashrc
-if [ "$?" != "0" ]; then
-	echo "Modifying ~/.profile to add GOROOT"
-	echo "export GOROOT=${GOROOT}" >>~/.bashrc
-fi
+export GOPATH=$HOME/.go
 
 if [ ! -d "$GOPATH" ]; then
 	echo "Creating local GOPATH in ${GOPATH}"
@@ -21,7 +9,7 @@ fi
 
 grep -q "GOPATH=" ~/.bashrc
 if [ "$?" != "0" ]; then
-	echo "Modifying ~/.profile to add GOPATH"
+	echo "Modifying ~/.bashrc to add GOPATH"
 	echo "export GOPATH=${GOPATH}" >>~/.bashrc
 	echo "export PATH=\$PATH:${GOPATH}/bin" >>~/.bashrc
 fi
