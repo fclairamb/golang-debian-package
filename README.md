@@ -8,22 +8,14 @@
 
 This last command should be issued for any user using the environment.
 
+## Why ?
+
+This allows to install go very quickly.
+
+[Godeb](https://github.com/niemeyer/godeb) might be a better fit than this tool but it doesn't provide DEB files as-is.
+
 ## What does it do ?
 
 * Install the go files in /opt/go
 * Create some symbolic links from /opt/go/bin to /usr/bin
 * Add a specific go-prepare-env script to make it simpler for users to set their GOPATH environment variable
-
-## Target
-
-Works on any amd64/i386 debian based distribution (Debian 5+, Ubuntu 12+).
-
-## Why ?
-
-Packages are great. We should use them for everything.
-
-## Doesn't it already exist ?
-
-Debian packages indeed exist but they are outdated (even the rc-buggy one) and
-they enforce the debian packaging rules. Which implies not providing the official
-golang binaries.
