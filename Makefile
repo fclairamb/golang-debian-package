@@ -1,4 +1,4 @@
-VERSION=1.5
+VERSION=1.5.1
 ARCH:=$(DEB_HOST_ARCH)
 
 ifeq "$(ARCH)" "i386"
